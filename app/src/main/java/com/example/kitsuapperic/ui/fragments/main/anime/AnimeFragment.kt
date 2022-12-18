@@ -1,4 +1,4 @@
-package com.example.kitsuapperic.ui.fragments.anime
+package com.example.kitsuapperic.ui.fragments.main.anime
 
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -8,7 +8,7 @@ import com.example.kitsuapperic.R
 import com.example.kitsuapperic.base.BaseFragment
 import com.example.kitsuapperic.databinding.FragmentAnimeBinding
 import com.example.kitsuapperic.ui.adapters.AnimeAdapter
-import com.example.kitsuapperic.ui.fragments.manga.MangaFragment.Companion.SPAN_COUNT
+import com.example.kitsuapperic.ui.fragments.main.manga.MangaFragment.Companion.SPAN_COUNT
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

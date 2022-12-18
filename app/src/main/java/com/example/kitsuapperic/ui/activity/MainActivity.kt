@@ -1,45 +1,39 @@
 package com.example.kitsuapperic.ui.activity
 
-import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.viewpager2.widget.ViewPager2
-import by.kirich1409.viewbindingdelegate.viewBinding
+import androidx.navigation.fragment.NavHostFragment
 import com.example.kitsuapperic.R
-import com.example.kitsuapperic.databinding.ActivityMainBinding
-import com.example.kitsuapperic.ui.adapters.ViewPagerAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.example.kitsuapperic.data.locale.preferences.userdata.UserPreferencesData
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val binding by viewBinding(ActivityMainBinding::bind)
-    private lateinit var viewPager: ViewPager2
-    private lateinit var tabLayout: TabLayout
+    @Inject
+    lateinit var userPreferencesData: UserPreferencesData
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        tabLayout = binding.itemTabLayout
-        viewPager = binding.itemViewPager2
+        setupNavigation()
+    }
 
-        viewPager.adapter = ViewPagerAdapter(this)
-        TabLayoutMediator(tabLayout,viewPager) { tab, index ->
-            tab.text = when(index) {
-                0 -> {
-                    "Anime"
-                }
+    private fun setupNavigation() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
 
-                1 -> {
-                    "Manga"
-                }
-
-                else -> {
-                    throw Resources.NotFoundException("Not found exception")
-                }
+        val navGraph = navController.navInflater.inflate(R.navigation.nav_graph)
+        when {
+            userPreferencesData.isAuthorized -> {
+                navGraph.setStartDestination(R.id.mainFragment)
             }
-        }.attach()
+            else -> {
+                navGraph.setStartDestination(R.id.signInFragment)
+            }
+        }
+        navController.graph = navGraph
     }
 }

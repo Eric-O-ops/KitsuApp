@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface AnimeApiService {
 
-    @GET("anime")
+    @GET("edge/anime")
     suspend fun fetchAnime(
         @Query("page[limit]") pageLimit: Int,
         @Query("page[offset]") pageOffset: Int

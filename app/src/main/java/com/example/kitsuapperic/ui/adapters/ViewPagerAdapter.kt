@@ -2,13 +2,12 @@ package com.example.kitsuapperic.ui.adapters
 
 import android.content.res.Resources
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.kitsuapperic.ui.fragments.anime.AnimeFragment
-import com.example.kitsuapperic.ui.fragments.manga.MangaFragment
+import com.example.kitsuapperic.ui.fragments.main.anime.AnimeFragment
+import com.example.kitsuapperic.ui.fragments.main.manga.MangaFragment
 
 class ViewPagerAdapter(
-    fragment: FragmentActivity
+    fragment: Fragment
 ) : FragmentStateAdapter(fragment) {
 
     override fun getItemCount() = 2

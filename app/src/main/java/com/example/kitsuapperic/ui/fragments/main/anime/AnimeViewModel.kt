@@ -1,7 +1,6 @@
-package com.example.kitsuapperic.ui.fragments.anime
+package com.example.kitsuapperic.ui.fragments.main.anime
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import com.example.kitsuapperic.data.repositories.AnimeRepository
@@ -11,7 +10,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AnimeViewModel @Inject constructor(
     private val repository: AnimeRepository
-): ViewModel() {
+) : ViewModel() {
 
     fun fetchAnime() = repository.fetchAnime().cachedIn(viewModelScope)
 }

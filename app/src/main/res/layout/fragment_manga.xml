@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/brown"
-    tools:context=".ui.fragments.manga.MangaFragment">
+    tools:context=".ui.fragments.main.manga.MangaFragment">
 
    <androidx.recyclerview.widget.RecyclerView
        android:id="@+id/manga_recView"

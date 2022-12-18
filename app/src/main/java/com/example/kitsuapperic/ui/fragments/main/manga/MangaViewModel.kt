@@ -1,4 +1,4 @@
-package com.example.kitsuapperic.ui.fragments.manga
+package com.example.kitsuapperic.ui.fragments.main.manga
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
