@@ -9,5 +9,6 @@ interface SignInApiService {
 
     @POST("oauth/token")
     suspend fun postAuthDataUser(
-       @Body authModel: AuthModel):TokenModel
+        @Body authModel: AuthModel
+    ): TokenModel
 }

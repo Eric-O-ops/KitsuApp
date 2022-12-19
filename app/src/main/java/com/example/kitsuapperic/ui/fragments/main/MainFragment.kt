@@ -6,15 +6,21 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.kitsuapperic.accessToken
 import com.example.kitsuapperic.R
+import com.example.kitsuapperic.data.locale.preferences.userdata.UserPreferencesData
 import com.example.kitsuapperic.databinding.FragmentMainBinding
 import com.example.kitsuapperic.ui.adapters.ViewPagerAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
+
+    @Inject
+    lateinit var userPreferencesData: UserPreferencesData
 
     private val binding by viewBinding(FragmentMainBinding::bind)
     private lateinit var viewPager: ViewPager2
@@ -23,6 +29,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        accessToken = userPreferencesData.accessToken
         tabLayout = binding.itemTabLayout
         viewPager = binding.itemViewPager2
 
@@ -43,4 +50,5 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }.attach()
     }
+
 }
